@@ -15,6 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        
+        let tabBarController = UITabBarController()
+        let homeViewController = HomeViewController()
+        let accountViewController = AccountViewController()
+        let statsViewController = StatsViewController()
+        let controllers = [homeViewController, accountViewController, statsViewController]
+        
+        homeViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.MostViewed, tag: 0)
+        accountViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Contacts, tag: 1)
+        
+        tabBarController.viewControllers = controllers
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window!.rootViewController = tabBarController
+        window!.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         return true
     }
